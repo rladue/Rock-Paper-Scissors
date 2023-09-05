@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+<p>Game is currently run through console.</p>    
+</body>
+</html>
+<script>
+
+    // Get user input and store in userChoice
+    // needs to be case-insensitive
+    // check for inputs other than "rock, paper, scissors"
+
+    // Computer generates random choice in getComputerChoice()
+    // Use random number to generate computer choice
+    // returns choice in computerChoice
+
+    // Compare userChoice and computerChoice
+    // use console.log to display winner
+    
+    //Initialize variables
+    const rock = "rock";
+    const paper = "paper";
+    const scissors = "scissors";
+    let keepGoing = true;
+
+
+    function getUserChoice()
+    {
+        while(keepGoing)
+        {
+            let choice = prompt("Rock, Paper, or Scissors?");
+            if (choice == null || choice == undefined)
+            {
+                console.warn("User canceled, userChoice will be null");
+                keepGoing = false;
+                return null;
+            }
+            else if (choice.toLowerCase() == "rock" || choice.toLowerCase() == "paper" || choice.toLowerCase() == "scissors")
+            {
+                keepGoing = false;
+                return choice.toLowerCase();
+            }
+            else {
+                alert("Not a correct choice. Please select again");
+                keepGoing = true;
+            }
+        }
+    }
+
+    function getComputerChoice()
+    {
+
+    }
+
+    let userChoice = getUserChoice();
+    console.log(`User selected: ${userChoice}`);
+    //let computerChoice = getComputerChoice();
+
+
+
+</script>
