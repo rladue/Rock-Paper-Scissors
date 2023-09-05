@@ -69,23 +69,42 @@
 
     function playRound(playerSelection, computerSelection)
     {
-        if (playerSelection == null) return "Error: No selection detected for user";
-        else if (computerSelection == null) return "Error: No selected detected for computer";
-        else if (playerSelection == computerSelection) return "Tie!";
+        if (playerSelection == null) return "Error: No selection detected for user"; // check for cancel/null from user
+        else if (computerSelection == null) return "Error: No selected detected for computer"; // check for computer null
+
+        else if (playerSelection == computerSelection) return "Tie!"; // Check first for tie
+
+        // Scenarios in which user wins.
         else if (playerSelection == "rock" && computerSelection == "scissors") return "You Win! Rock beats Scissors"
         else if (playerSelection == "paper" && computerSelection == "rock") return "You Win! Paper beats Rock"
         else if (playerSelection == "scissors" && computerSelection == "paper") return "You Win! Scissors beats Paper"
+
+        // Scenarios in which computer wins
         else if (playerSelection == "rock" && computerSelection == "paper") return "Computer Wins! Paper beats Rock"
         else if (playerSelection == "paper" && computerSelection == "scissors") return "Computer Wins! Scissors beats Paper"
         else if (playerSelection == "scissors" && computerSelection == "rock") return "Computer Wins! Rock beats Scissors"
+
+        // default return in case of error.
         else return "Error: No decision."
     }
 
-    let userChoice = getUserChoice();
-    console.log(`User selected: ${userChoice}`);
-    let computerChoice = getComputerChoice();
-    console.log(`Comnputer selected: ${computerChoice}`);
-    console.log(playRound(userChoice, computerChoice));
+    function game(numToPlay)
+    {
+        for (let i = 0; i < numToPlay; i++){
+        console.log(`Game ${i+1} Result: ` + playRound(getUserChoice(), getComputerChoice()));
+        } 
+    }
+
+    let numGames = Number(prompt("How many games to play?"));
+    console.log(game(numGames));
+
+    /* Debugging
+    let userChoice = getUserChoice(); // create userChoice
+    console.log(`User selected: ${userChoice}`); // debugging code
+    let computerChoice = getComputerChoice(); // create computerChoice
+    console.log(`Comnputer selected: ${computerChoice}`); // debugging code
+    */
+
 
 
 
