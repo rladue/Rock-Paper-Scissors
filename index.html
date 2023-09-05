@@ -11,13 +11,9 @@
 </html>
 <script>
 
-    // Get user input and store in userChoice
-    // needs to be case-insensitive
-    // check for inputs other than "rock, paper, scissors"
 
-    // Computer generates random choice in getComputerChoice()
-    // Use random number to generate computer choice
-    // returns choice in computerChoice
+
+
 
     // Compare userChoice and computerChoice
     // use console.log to display winner
@@ -26,40 +22,56 @@
     const rock = "rock";
     const paper = "paper";
     const scissors = "scissors";
-    let keepGoing = true;
 
 
+    // Get user input and store in userChoice
+    // needs to be case-insensitive
+    // check for inputs other than "rock, paper, scissors"
+    // returns null if user clicks cancel on input
+    // returns userChoice
     function getUserChoice()
     {
+        let keepGoing = true; // sentry for while loop
         while(keepGoing)
         {
             let choice = prompt("Rock, Paper, or Scissors?");
-            if (choice == null || choice == undefined)
+            if (choice == null) // check for cancel
             {
                 console.warn("User canceled, userChoice will be null");
-                keepGoing = false;
-                return null;
+                keepGoing = false; // end while loop
+                return null; // return null
             }
             else if (choice.toLowerCase() == "rock" || choice.toLowerCase() == "paper" || choice.toLowerCase() == "scissors")
             {
-                keepGoing = false;
-                return choice.toLowerCase();
+                keepGoing = false; // end while loop
+                return choice.toLowerCase(); // return all lowercase value of input
             }
-            else {
+            else { // runs only if user did not input a correct choice
                 alert("Not a correct choice. Please select again");
-                keepGoing = true;
+                keepGoing = true; // keeps loop going
             }
         }
     }
 
+    // Generate random choice and store in computerChoice
+    // Returns computerChoice
     function getComputerChoice()
     {
-
+        let randInt = Math.floor(Math.random() * 3); // generate random number between 0-2
+        if (randInt === 0) return "rock"; // assign rock if number is 0
+        if (randInt === 1) return "paper"; // assign paper if number is 1
+        if (randInt === 2) return "scissors"; // assign scissor if number 2
+        else { 
+            console.error("Error in generating computerChoice. Returning null"); // In case of unforseen error, at least return null and log error.
+            return null;
+        }
     }
 
     let userChoice = getUserChoice();
     console.log(`User selected: ${userChoice}`);
-    //let computerChoice = getComputerChoice();
+    let computerChoice = getComputerChoice();
+    console.log(`Comnputer selected: ${computerChoice}`);
+
 
 
 
