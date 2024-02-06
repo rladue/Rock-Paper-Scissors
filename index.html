@@ -91,7 +91,14 @@
     function game(numToPlay)
     {
         for (let i = 0; i < numToPlay; i++){
-        console.log(`Game ${i+1} Result: ` + playRound(getUserChoice(), getComputerChoice()));
+            let userChoice = getUserChoice();
+            let computerChoice = getComputerChoice();
+            if (userChoice == null){
+                console.log(`User canceled the game`);
+                break;
+                }
+            let roundResult = playRound(userChoice, computerChoice);
+            console.log(`Game ${i+1} Result: ` + roundResult);
         } 
     }
 
